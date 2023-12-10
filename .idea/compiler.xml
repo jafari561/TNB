@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="TaxeTNBMicroservice" />
+        <module name="discovery_server" />
+        <module name="RedevableMicroservice" />
+        <module name="CategorieTerrainMicroservice" />
+        <module name="TerrainMicroservice" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="CategorieTerrainMicroservice" target="17" />
+      <module name="discovery_server" target="17" />
+      <module name="RedevableMicroservice" target="17" />
+      <module name="TaxeTNBMicroservice" target="17" />
+      <module name="TerrainMicroservice" target="17" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="CategorieTerrainMicroservice" options="-parameters" />
+      <module name="RedevableMicroservice" options="-parameters" />
+      <module name="TaxeTNBMicroservice" options="-parameters" />
+      <module name="TerrainMicroservice" options="-parameters" />
+      <module name="discovery_server" options="-parameters" />
+    </option>
+  </component>
+</project>
