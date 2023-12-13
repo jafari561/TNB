@@ -4,11 +4,13 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+@Transactional
 @Entity
 @Getter
 @Setter
@@ -21,5 +23,6 @@ public class CategorieTerrain {
     private String nomCategorie;
     private double taux;
 
+    // Getters and setters
 }
 

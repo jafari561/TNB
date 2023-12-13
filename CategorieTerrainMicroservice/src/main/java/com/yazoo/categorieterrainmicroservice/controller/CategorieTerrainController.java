@@ -17,25 +17,31 @@ public class CategorieTerrainController {
         this.categorieTerrainService = categorieTerrainService;
     }
 
+    //======================================================================================
     @GetMapping("/all")
     public List<CategorieTerrain> getAllCategories() {
         return categorieTerrainService.getAllCategories();
     }
 
+    //======================================================================================
     @PostMapping("/save")
-    public CategorieTerrain saveCategory(@RequestBody CategorieTerrain categorieTerrain) {
+    public String saveCategory(@RequestBody CategorieTerrain categorieTerrain) {
         return categorieTerrainService.saveCategory(categorieTerrain);
     }
 
+    //======================================================================================
     @GetMapping("/{id}")
     public CategorieTerrain getCategoryById(@PathVariable Long id) {
         return categorieTerrainService.getCategoryById(id);
     }
 
+    //======================================================================================
     @GetMapping("/nom/{nomCategorie}")
-    public CategorieTerrain getCategoryById(@PathVariable String nomCategorie) {
-        return categorieTerrainService.getCategoryByNom(nomCategorie);
+    public CategorieTerrain findByNomCategorie(@PathVariable String nomCategorie) {
+        return categorieTerrainService.findByNomCategorie(nomCategorie);
     }
 
 
+    // Additional endpoints for CRUD operations and retrieving tax rate by category
 }
+

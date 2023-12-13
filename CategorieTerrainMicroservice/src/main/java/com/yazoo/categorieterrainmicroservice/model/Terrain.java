@@ -1,7 +1,7 @@
 package com.yazoo.categorieterrainmicroservice.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -9,6 +9,7 @@ import lombok.Setter;
 
 import java.util.List;
 
+@Transactional
 @Entity
 @Getter
 @Setter
@@ -20,12 +21,10 @@ public class Terrain {
     private Long terrainID;
     private double surface;
 
-    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "categorie_id")
     private CategorieTerrain categorie;
 
-    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "proprietaire_cin")
     private Redevable proprietaire;
@@ -33,4 +32,5 @@ public class Terrain {
     @OneToMany(mappedBy = "terrain", cascade = CascadeType.ALL)
     private List<TaxeTNB> taxesTNB;
 
+    // Getters and setters
 }

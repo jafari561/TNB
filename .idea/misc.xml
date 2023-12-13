@@ -6,7 +6,6 @@
         <option value="$PROJECT_DIR$/RedevableMicroservice/pom.xml" />
         <option value="$PROJECT_DIR$/CategorieTerrainMicroservice/pom.xml" />
         <option value="$PROJECT_DIR$/TerrainMicroservice/pom.xml" />
-        <option value="$PROJECT_DIR$/TaxeTNBMicroservice/pom.xml" />
         <option value="$PROJECT_DIR$/discovery_server/pom.xml" />
       </list>
     </option>

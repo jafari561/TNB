@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class CategorieTerrainService {
@@ -18,24 +17,30 @@ public class CategorieTerrainService {
         this.categorieTerrainRepository = categorieTerrainRepository;
     }
 
+    //==============================================================================================
     public List<CategorieTerrain> getAllCategories() {
         return categorieTerrainRepository.findAll();
     }
 
-    public CategorieTerrain saveCategory(CategorieTerrain categorieTerrain) {
+    public String saveCategory(CategorieTerrain categorieTerrain) {
         // Additional logic for saving a category
-        return categorieTerrainRepository.save(categorieTerrain);
+        CategorieTerrain C = categorieTerrainRepository.findByNomCategorie(categorieTerrain.getNomCategorie());
+        if(C==null){categorieTerrainRepository.save(categorieTerrain);return "categorie added";}
+        else return "categorie with name "+C.getNomCategorie()+" already exists";
     }
 
     public CategorieTerrain getCategoryById(Long id) {
-        Optional<CategorieTerrain> optionalCategory = categorieTerrainRepository.findById(id);
-        return optionalCategory.orElseThrow(() -> new EntityNotFoundException("Category with ID " + id + " not found."));
+        return categorieTerrainRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("Category with ID " + id + " not found."));
     }
 
-    public CategorieTerrain getCategoryByNom(String nomCategorie) {
-        Optional<CategorieTerrain> category = Optional.ofNullable(categorieTerrainRepository.findByNomCategorie(nomCategorie));
-        return category.orElseThrow(() -> new EntityNotFoundException("Category with name " + nomCategorie + " not found."));
+    public CategorieTerrain findByNomCategorie(String nomCategorie) {
+        return categorieTerrainRepository.findByNomCategorie(nomCategorie);
     }
+    //==============================================================================================
 
 
+
+    // Additional methods for CRUD operations and retrieving tax rate by category
 }
+
