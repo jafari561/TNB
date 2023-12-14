@@ -8,6 +8,6 @@
 # Stage 2: Create the final image with the compiled JAR
 FROM openjdk:17-alpine
 WORKDIR /app
-COPY target/terrain-service*.jar /app/terrain-service.jar
+COPY target/TerrainMicroservice*.jar /app/terrain-service.jar
 CMD ["java", "-jar", "terrain-service.jar"]
 EXPOSE 8084

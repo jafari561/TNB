@@ -8,6 +8,6 @@
 # Stage 2: Create the final image with the compiled JAR
 FROM openjdk:17-alpine
 WORKDIR /app
-COPY target/redevable-service*.jar /app/redevable-service.jar
+COPY target/RedevableMicroservice*.jar /app/redevable-service.jar
 CMD ["java", "-jar", "redevable-service.jar"]
 EXPOSE 8081
