@@ -5,6 +5,10 @@ services:
     build:
       context: ./discovery_server
       dockerfile: Dockerfile
+    ports:
+      - "8761:8761"
+    networks:
+      - TNB-network
 
   redevable-service:
     build:
@@ -15,6 +19,8 @@ services:
     depends_on:
       - discover-server
       - mysql
+    networks:
+      - TNB-network
 
   categorie-service:
     build:
@@ -25,6 +31,8 @@ services:
     depends_on:
       - discover-server
       - mysql
+    networks:
+      - TNB-network
 
   terrain-service:
     build:
@@ -35,6 +43,8 @@ services:
     depends_on:
       - discover-server
       - mysql
+    networks:
+      - TNB-network
 
   mysql:
     image: mysql:latest
@@ -45,4 +55,10 @@ services:
       MYSQL_ROOT_PASSWORD: yazooPassword
     ports:
       - "3306:3306"
+    networks:
+      - TNB-network
+
+networks:
+  TNB-network:
+    driver: bridge
     # Add any additional configurations for your MySQL service here
