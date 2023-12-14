@@ -47,12 +47,13 @@ services:
       - TNB-network
 
   mysql:
-    image: mysql:latest
+    image: mariadb:latest
     environment:
       MYSQL_DATABASE: project_tnb
       MYSQL_USER: yazoo
       MYSQL_PASSWORD: yazooPassword
       MYSQL_ROOT_PASSWORD: yazooPassword
+    restart: always
     ports:
       - "3306:3306"
     networks:
