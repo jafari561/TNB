@@ -48,6 +48,7 @@ services:
 
   mysql:
     image: mysql:latest
+    container_name: tnb_db
     environment:
       MYSQL_DATABASE: project_tnb
       MYSQL_USER: yazoo
