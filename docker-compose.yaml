@@ -18,7 +18,6 @@ services:
       - "8081:8081"
     depends_on:
       - discover-server
-      - mysql
     networks:
       - TNB-network
 
@@ -30,7 +29,6 @@ services:
       - "8082:8082"
     depends_on:
       - discover-server
-      - mysql
     networks:
       - TNB-network
 
@@ -42,23 +40,10 @@ services:
       - "8084:8084"
     depends_on:
       - discover-server
-      - mysql
     networks:
       - TNB-network
 
-  mysql:
-    image: mysql:latest
-    container_name: tnb_db
-    environment:
-      MYSQL_DATABASE: project_tnb
-      MYSQL_USER: yazoo
-      MYSQL_PASSWORD: yazooPassword
-      MYSQL_ROOT_PASSWORD: yazooPassword
-    restart: always
-    ports:
-      - "3306:3306"
-    networks:
-      - TNB-network
+
 
 networks:
   TNB-network:
