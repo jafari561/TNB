@@ -18,6 +18,7 @@ services:
       - "8081:8081"
     depends_on:
       - discover-server
+      - mysql
     networks:
       - TNB-network
 
@@ -29,6 +30,7 @@ services:
       - "8082:8082"
     depends_on:
       - discover-server
+      - mysql
     networks:
       - TNB-network
 
@@ -40,12 +42,28 @@ services:
       - "8084:8084"
     depends_on:
       - discover-server
+      - mysql
     networks:
       - TNB-network
 
-
+  mysql:
+    build:
+      context: ./mysql
+    image: mysql:latest
+    container_name: mysql
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_db:/var/lib/mysql
+    environment:
+      - MYSQL_DATABASE=project_tnb
+      - MYSQL_ROOT_PASSWORD=root
+    networks:
+      - TNB-network
 
 networks:
   TNB-network:
     driver: bridge
     # Add any additional configurations for your MySQL service here
+volumes:
+  mysql_db:

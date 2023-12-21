@@ -41,7 +41,7 @@ public class TerrainService {
         } else {
             try {
                 Redevable redevable = restTemplate.getForObject("http://REDEVABLE-SERVICE/redevable/" + terrain.getProprietaire().getCin(), Redevable.class);
-                CategorieTerrain categorie = restTemplate.getForObject("http://CATEGORIE-TERRAIN-MICROSERVICE/categorie/nom/" + terrain.getCategorie().getNomCategorie(), CategorieTerrain.class);
+                CategorieTerrain categorie = restTemplate.getForObject("http://CATEGORIE-SERVICE/categorie/nom/" + terrain.getCategorie().getNomCategorie(), CategorieTerrain.class);
                 terrain.setProprietaire(redevable);
                 terrain.setCategorie(categorie);
                 terrainRepository.save(terrain);
@@ -62,7 +62,7 @@ public class TerrainService {
     public double calculateTax(Long terrainId) {
         // Implement logic to calculate tax based on terrainId
         Optional<Terrain> terrain = terrainRepository.findById(terrainId);
-        CategorieTerrain categorie = restTemplate.getForObject("http://CATEGORIE-TERRAIN-MICROSERVICE/categorie/nom/" + terrain.get().getCategorie().getNomCategorie(), CategorieTerrain.class);
+        CategorieTerrain categorie = restTemplate.getForObject("http://CATEGORIE-SERVICE/categorie/nom/" + terrain.get().getCategorie().getNomCategorie(), CategorieTerrain.class);
 
         return terrain.get().getSurface() * categorie.getTaux();  // Placeholder, replace with actual calculation
     }
