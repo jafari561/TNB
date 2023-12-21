@@ -9,6 +9,11 @@ services:
       - "8761:8761"
     networks:
       - TNB-network
+    deploy:
+      resources:
+        limits:
+          cpus: '0.50'
+          memory: 1G
 
   redevable-service:
     build:
@@ -21,6 +26,11 @@ services:
       - mysql
     networks:
       - TNB-network
+    deploy:
+      resources:
+        limits:
+          cpus: '0.50'
+          memory: 1G
 
   categorie-service:
     build:
@@ -33,6 +43,11 @@ services:
       - mysql
     networks:
       - TNB-network
+    deploy:
+      resources:
+        limits:
+          cpus: '0.50'
+          memory: 1G
 
   terrain-service:
     build:
@@ -45,10 +60,13 @@ services:
       - mysql
     networks:
       - TNB-network
+    deploy:
+      resources:
+        limits:
+          cpus: '0.50'
+          memory: 1G
 
   mysql:
-    build:
-      context: ./mysql
     image: mysql:latest
     container_name: mysql
     ports:
