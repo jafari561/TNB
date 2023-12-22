@@ -2,6 +2,8 @@
 FROM maven:3.6.3 AS build
 WORKDIR /app
 COPY pom.xml .
+RUN ["mvn", "dependency:resolve"]
+RUN ["mvn", "verify"]
 COPY src ./src
 RUN mvn clean package -DskipTests
 
