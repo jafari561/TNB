@@ -1,5 +1,5 @@
 # Stage 1: Build the application with Maven
-FROM maven:3.6.3 AS build
+FROM maven:latest AS build
 WORKDIR /app
 COPY pom.xml .
 COPY src ./src
