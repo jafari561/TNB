@@ -101,7 +101,7 @@ services:
     ports:
       - "9999:3306"
     volumes:
-      - mysql_db:/var/lib/mysql
+      - mysql_dbr:/var/lib/mysql
     environment:
       - MYSQL_DATABASE=tnb_redevable
       - MYSQL_ROOT_PASSWORD=root
@@ -114,7 +114,7 @@ services:
     ports:
       - "9998:3306"
     volumes:
-      - mysql_db:/var/lib/mysql
+      - mysql_dbc:/var/lib/mysql
     environment:
       - MYSQL_DATABASE=tnb_categorie
       - MYSQL_ROOT_PASSWORD=root
@@ -127,7 +127,7 @@ services:
     ports:
       - "9997:3306"
     volumes:
-      - mysql_db:/var/lib/mysql
+      - mysql_dbt:/var/lib/mysql
     environment:
       - MYSQL_DATABASE=tnb_terrain
       - MYSQL_ROOT_PASSWORD=root
@@ -139,4 +139,6 @@ networks:
     driver: bridge
     # Add any additional configurations for your MySQL service here
 volumes:
-  mysql_db:
+  mysql_dbr:
+  mysql_dbc:
+  mysql_dbt:
