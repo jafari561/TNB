@@ -39,6 +39,7 @@ services:
     build:
       context: ./RedevableMicroservice
       dockerfile: Dockerfile
+    container_name: redevable-service
     ports:
       - "8081:8081"
     depends_on:
@@ -58,6 +59,7 @@ services:
     build:
       context: ./CategorieTerrainMicroservice
       dockerfile: Dockerfile
+    container_name: categorie-service
     ports:
       - "8082:8082"
     depends_on:
@@ -77,6 +79,7 @@ services:
     build:
       context: ./TerrainMicroservice
       dockerfile: Dockerfile
+    container_name: terrain-service
     ports:
       - "8084:8084"
     depends_on:
