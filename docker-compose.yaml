@@ -95,7 +95,7 @@ services:
     image: mysql:latest
     container_name: mysql_redevable
     ports:
-      - "3306:3306"
+      - "9999:3306"
     volumes:
       - mysql_db:/var/lib/mysql
     environment:
@@ -108,7 +108,7 @@ services:
     image: mysql:latest
     container_name: mysql_categorie
     ports:
-      - "3307:3306"
+      - "9998:3306"
     volumes:
       - mysql_db:/var/lib/mysql
     environment:
@@ -121,7 +121,7 @@ services:
     image: mysql:latest
     container_name: mysql_terrain
     ports:
-      - "3308:3306"
+      - "9997:3306"
     volumes:
       - mysql_db:/var/lib/mysql
     environment:
