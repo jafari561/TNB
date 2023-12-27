@@ -15,6 +15,25 @@ services:
           cpus: '0.50'
           memory: 1G
 
+  zookeeper:
+    image: wurstmeister/zookeeper
+    container_name: zookeeper
+    ports:
+      - "2181:2181"
+    networks:
+      - TNB-network
+
+  kafka:
+    image: wurstmeister/kafka
+    container_name: kafka
+    ports:
+      - "9092:9092"
+    environment:
+      KAFKA_ADVERTISED_HOST_NAME: localhost
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+    networks:
+      - TNB-network
+
   redevable-service:
     build:
       context: ./RedevableMicroservice
@@ -24,6 +43,8 @@ services:
     depends_on:
       - discover-server
       - mysql
+      - zookeeper
+      - kafka
     networks:
       - TNB-network
     deploy:
@@ -41,6 +62,8 @@ services:
     depends_on:
       - discover-server
       - mysql
+      - zookeeper
+      - kafka
     networks:
       - TNB-network
     deploy:
@@ -58,6 +81,8 @@ services:
     depends_on:
       - discover-server
       - mysql
+      - zookeeper
+      - kafka
     networks:
       - TNB-network
     deploy:
@@ -66,15 +91,41 @@ services:
           cpus: '0.50'
           memory: 1G
 
-  mysql:
+  mysql_redevable:
     image: mysql:latest
-    container_name: mysql
+    container_name: mysql_redevable
     ports:
       - "3306:3306"
     volumes:
       - mysql_db:/var/lib/mysql
     environment:
-      - MYSQL_DATABASE=project_tnb
+      - MYSQL_DATABASE=tnb_redevable
+      - MYSQL_ROOT_PASSWORD=root
+    networks:
+      - TNB-network
+
+  mysql_categorie:
+    image: mysql:latest
+    container_name: mysql_categorie
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_db:/var/lib/mysql
+    environment:
+      - MYSQL_DATABASE=tnb_categorie
+      - MYSQL_ROOT_PASSWORD=root
+    networks:
+      - TNB-network
+
+  mysql_terrain:
+    image: mysql:latest
+    container_name: mysql_terrain
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_db:/var/lib/mysql
+    environment:
+      - MYSQL_DATABASE=tnb_terrain
       - MYSQL_ROOT_PASSWORD=root
     networks:
       - TNB-network
