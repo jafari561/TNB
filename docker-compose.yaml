@@ -108,7 +108,7 @@ services:
     image: mysql:latest
     container_name: mysql_categorie
     ports:
-      - "3306:3306"
+      - "3306:3307"
     volumes:
       - mysql_db:/var/lib/mysql
     environment:
@@ -121,7 +121,7 @@ services:
     image: mysql:latest
     container_name: mysql_terrain
     ports:
-      - "3306:3306"
+      - "3306:3308"
     volumes:
       - mysql_db:/var/lib/mysql
     environment:
