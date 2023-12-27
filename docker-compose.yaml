@@ -5,6 +5,7 @@ services:
     build:
       context: ./discovery_server
       dockerfile: Dockerfile
+    container_name: discover-server
     ports:
       - "8761:8761"
     networks:
