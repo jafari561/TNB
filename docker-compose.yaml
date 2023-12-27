@@ -44,7 +44,7 @@ services:
       - "8081:8081"
     depends_on:
       - discover-server
-      - mysql_redevable
+      - mysqlr
       - zookeeper
       - kafka
     networks:
@@ -64,7 +64,7 @@ services:
       - "8082:8082"
     depends_on:
       - discover-server
-      - mysql_categorie
+      - mysqlc
       - zookeeper
       - kafka
     networks:
@@ -84,7 +84,7 @@ services:
       - "8084:8084"
     depends_on:
       - discover-server
-      - mysql_terrain
+      - mysqlt
       - zookeeper
       - kafka
     networks:
@@ -95,9 +95,9 @@ services:
           cpus: '0.50'
           memory: 1G
 
-  mysql_redevable:
+  mysqlr:
     image: mysql:latest
-    container_name: mysql_redevable
+    container_name: mysqlr
     ports:
       - "9999:3306"
     volumes:
@@ -108,9 +108,9 @@ services:
     networks:
       - TNB-network
 
-  mysql_categorie:
+  mysqlc:
     image: mysql:latest
-    container_name: mysql_categorie
+    container_name: mysqlc
     ports:
       - "9998:3306"
     volumes:
@@ -121,9 +121,9 @@ services:
     networks:
       - TNB-network
 
-  mysql_terrain:
+  mysqlt:
     image: mysql:latest
-    container_name: mysql_terrain
+    container_name: mysqlt
     ports:
       - "9997:3306"
     volumes:
