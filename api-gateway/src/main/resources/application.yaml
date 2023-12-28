@@ -1,0 +1,26 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    gateway:
+      routes:
+        - id: redevable-route
+          uri: ${REDEVABLE_URL}
+          predicates:
+            - Path=/redevable/**
+          filters:
+            - RewritePath=/microservice1/(?<path>.*), /$\{path}
+        - id: categorie-route
+          uri: ${CATEGORIE_URL}
+          predicates:
+            - Path=/categorie/**
+          filters:
+            - RewritePath=/microservice2/(?<path>.*), /$\{path}
+        - id: terrain-route
+          uri: ${TERRAIN_URL}
+          predicates:
+            - Path=/terrain/**
+            - Path=/taxe/**

@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/taxe-tnb")
+@RequestMapping("/taxe")
 public class TaxeTNBController {
     private final TaxeTNBService taxeTNBService;
 

@@ -42,6 +42,21 @@ services:
     networks:
       - TNB-network
 
+  api-gateway:
+    build:
+      context: ./api-gateway
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    depends_on:
+      - redevable-service
+      - categorie-service
+      - terrain-service
+    environment:
+      REDEVABLE_URL: lb://CATEGORIE-SERVICE
+      CATEGORIE_URL: lb://REDEVABLE-SERVICE
+      TERRAIN_URL: lb://TERRAIN-SERVICE
+
   redevable-service:
     build:
       context: ./RedevableMicroservice

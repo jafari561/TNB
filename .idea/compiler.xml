@@ -8,12 +8,14 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="discovery_server" />
+        <module name="api-gateway" />
         <module name="TerrainMicroservice" />
         <module name="CategorieTerrainMicroservice" />
         <module name="RedevableMicroservice" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="api-gateway" target="17" />
       <module name="CategorieTerrainMicroservice" target="17" />
       <module name="discovery_server" target="17" />
       <module name="RedevableMicroservice" target="17" />
@@ -27,6 +29,7 @@
       <module name="RedevableMicroservice" options="-parameters" />
       <module name="TaxeTNBMicroservice" options="-parameters" />
       <module name="TerrainMicroservice" options="-parameters" />
+      <module name="api-gateway" options="-parameters" />
       <module name="discovery_server" options="-parameters" />
     </option>
   </component>
