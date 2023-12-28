@@ -8,9 +8,9 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="discovery_server" />
-        <module name="RedevableMicroservice" />
-        <module name="CategorieTerrainMicroservice" />
         <module name="TerrainMicroservice" />
+        <module name="CategorieTerrainMicroservice" />
+        <module name="RedevableMicroservice" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>

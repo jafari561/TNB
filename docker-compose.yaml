@@ -5,6 +5,7 @@ services:
     build:
       context: ./discovery_server
       dockerfile: Dockerfile
+    container_name: discover-server
     ports:
       - "8761:8761"
     networks:
@@ -15,15 +16,44 @@ services:
           cpus: '0.50'
           memory: 1G
 
+  zookeeper:
+    image: wurstmeister/zookeeper
+    container_name: zookeeper
+    ports:
+      - "2181:2181"
+    expose:
+      - "2181"
+    networks:
+      - TNB-network
+
+  kafka:
+    image: wurstmeister/kafka
+    container_name: kafka
+    ports:
+      - "9092:9092"
+    expose:
+      - "9092"
+    environment:
+      KAFKA_ADVERTISED_LISTENERS: INSIDE://kafka:9092
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: INSIDE:PLAINTEXT,OUTSIDE:PLAINTEXT
+      KAFKA_LISTENERS: INSIDE://0.0.0.0:9092
+      KAFKA_INTER_BROKER_LISTENER_NAME: INSIDE
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+    networks:
+      - TNB-network
+
   redevable-service:
     build:
       context: ./RedevableMicroservice
       dockerfile: Dockerfile
+    container_name: redevable-service
     ports:
       - "8081:8081"
     depends_on:
       - discover-server
-      - mysql
+      - mysqlr
+      - zookeeper
+      - kafka
     networks:
       - TNB-network
     deploy:
@@ -36,11 +66,14 @@ services:
     build:
       context: ./CategorieTerrainMicroservice
       dockerfile: Dockerfile
+    container_name: categorie-service
     ports:
       - "8082:8082"
     depends_on:
       - discover-server
-      - mysql
+      - mysqlc
+      - zookeeper
+      - kafka
     networks:
       - TNB-network
     deploy:
@@ -53,11 +86,14 @@ services:
     build:
       context: ./TerrainMicroservice
       dockerfile: Dockerfile
+    container_name: terrain-service
     ports:
       - "8084:8084"
     depends_on:
       - discover-server
-      - mysql
+      - mysqlt
+      - zookeeper
+      - kafka
     networks:
       - TNB-network
     deploy:
@@ -66,15 +102,41 @@ services:
           cpus: '0.50'
           memory: 1G
 
-  mysql:
+  mysqlr:
     image: mysql:latest
-    container_name: mysql
+    container_name: mysqlr
     ports:
-      - "3306:3306"
+      - "9999:3306"
     volumes:
-      - mysql_db:/var/lib/mysql
+      - mysql_dbr:/var/lib/mysql
     environment:
-      - MYSQL_DATABASE=project_tnb
+      - MYSQL_DATABASE=tnb_redevable
+      - MYSQL_ROOT_PASSWORD=root
+    networks:
+      - TNB-network
+
+  mysqlc:
+    image: mysql:latest
+    container_name: mysqlc
+    ports:
+      - "9998:3306"
+    volumes:
+      - mysql_dbc:/var/lib/mysql
+    environment:
+      - MYSQL_DATABASE=tnb_categorie
+      - MYSQL_ROOT_PASSWORD=root
+    networks:
+      - TNB-network
+
+  mysqlt:
+    image: mysql:latest
+    container_name: mysqlt
+    ports:
+      - "9997:3306"
+    volumes:
+      - mysql_dbt:/var/lib/mysql
+    environment:
+      - MYSQL_DATABASE=tnb_terrain
       - MYSQL_ROOT_PASSWORD=root
     networks:
       - TNB-network
@@ -84,4 +146,6 @@ networks:
     driver: bridge
     # Add any additional configurations for your MySQL service here
 volumes:
-  mysql_db:
+  mysql_dbr:
+  mysql_dbc:
+  mysql_dbt:
