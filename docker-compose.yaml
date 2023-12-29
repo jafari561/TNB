@@ -54,8 +54,8 @@ services:
       - categorie-service
       - terrain-service
     environment:
-      REDEVABLE_URL: http://CATEGORIE-SERVICE
-      CATEGORIE_URL: http://REDEVABLE-SERVICE
+      REDEVABLE_URL: http://REDEVABLE-SERVICE
+      CATEGORIE_URL: http://CATEGORIE-SERVICE
       TERRAIN_URL: http://TERRAIN-SERVICE
     networks:
       - TNB-network
