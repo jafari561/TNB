@@ -57,6 +57,8 @@ services:
       REDEVABLE_URL: lb://CATEGORIE-SERVICE
       CATEGORIE_URL: lb://REDEVABLE-SERVICE
       TERRAIN_URL: lb://TERRAIN-SERVICE
+    networks:
+      - TNB-network
 
   redevable-service:
     build:
