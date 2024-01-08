@@ -1,4 +1,4 @@
-package com.yazoo;
+package com.yazzo;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

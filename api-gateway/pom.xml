@@ -6,9 +6,9 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>3.2.1</version>
-        <relativePath/> <!-- lookup parent from repository --><!-- lookup parent from repository -->
+        <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>com.yazoo</groupId>
+    <groupId>com.yazzo</groupId>
     <artifactId>api-gateway</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>api-gateway</name>
@@ -28,17 +28,17 @@
         </dependency>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-gateway</artifactId>
+            <artifactId>spring-cloud-starter-gateway-mvc</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
         </dependency>
 
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <optional>true</optional>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
