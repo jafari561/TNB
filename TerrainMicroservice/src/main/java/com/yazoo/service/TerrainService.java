@@ -108,6 +108,10 @@ public class TerrainService {
         if(taxRecords == null) {return false;} else {return true;}
     }
 
+    public List<Terrain> findTerrainsOfRedevable(String cin){
+        return terrainRepository.findTerrainByProprietaire(cin);
+    }
+
     // Additional methods for CRUD operations and other functionalities
 
 

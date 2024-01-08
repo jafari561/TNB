@@ -49,6 +49,11 @@ public class TerrainController {
         return terrainService.isTaxPaidForYear(terrainId, year);
     }
 
+    @GetMapping("/proprietaire/{cin}")
+    public List<Terrain> findTerrainsByCIN(@PathVariable String cin) {
+        return terrainService.findTerrainsOfRedevable(cin);
+    }
+
     // Additional endpoints for CRUD operations and other functionalities
 }
 
