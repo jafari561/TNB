@@ -8,19 +8,19 @@ spring:
     gateway:
       routes:
         - id: redevable-route
-          uri: ${REDEVABLE_URL}
+          uri: lb://REDEVABLE-SERVICE
           predicates:
             - Path=/redevable/**
           filters:
             - RewritePath=/microservice1/(?<path>.*), /$\{path}
         - id: categorie-route
-          uri: ${CATEGORIE_URL}
+          uri: lb://CATEGORIE-SERVICE
           predicates:
             - Path=/categorie/**
           filters:
             - RewritePath=/microservice2/(?<path>.*), /$\{path}
         - id: terrain-route
-          uri: ${TERRAIN_URL}
+          uri: lb://TERRAIN-SERVICE
           predicates:
             - Path=/terrain/**
             - Path=/taxe/**
