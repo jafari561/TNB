@@ -109,7 +109,9 @@ public class TerrainService {
     }
 
     public List<Terrain> findTerrainsOfRedevable(String cin){
-        return terrainRepository.findTerrainByProprietaire(cin);
+
+        Redevable redevable = redevableRepository.findByCin(cin);
+        return terrainRepository.findTerrainByProprietaire(redevable);
     }
 
     // Additional methods for CRUD operations and other functionalities
