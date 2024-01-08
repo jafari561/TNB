@@ -26,7 +26,7 @@ public class Redevable {
     private String adresse;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "proprietaire", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "proprietaire")
     private List<Terrain> terrains;
 
     // Getters and setters
