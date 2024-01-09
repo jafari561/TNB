@@ -49,6 +49,8 @@ services:
     container_name: gateway
     ports:
       - "8085:8085"
+    expose:
+      - "8085"
     depends_on:
       - redevable-service
       - categorie-service
@@ -184,15 +186,15 @@ services:
     networks:
       - TNB-network
 
-  frontend:
-    build:
-      context: ./frontend/project_vue
-      dockerfile: Dockerfile
-    container_name: frontend
-    ports:
-      - "3454:8080"
-    depends_on:
-      - api-gateway
+  #frontend:
+   # build:
+    #  context: ./frontend/project_vue
+     # dockerfile: Dockerfile
+    #container_name: frontend
+    #ports:
+     # - "3454:8080"
+    #depends_on:
+     # - api-gateway
 
 networks:
   TNB-network:
