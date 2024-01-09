@@ -9,6 +9,7 @@
       <module fileurl="file://$PROJECT_DIR$/TerrainMicroservice/TerrainMicroservice.iml" filepath="$PROJECT_DIR$/TerrainMicroservice/TerrainMicroservice.iml" />
       <module fileurl="file://$PROJECT_DIR$/api-gateway/api-gateway.iml" filepath="$PROJECT_DIR$/api-gateway/api-gateway.iml" />
       <module fileurl="file://$PROJECT_DIR$/discovery_server/discovery_server.iml" filepath="$PROJECT_DIR$/discovery_server/discovery_server.iml" />
+      <module fileurl="file://$PROJECT_DIR$/identity-service/identity-service.iml" filepath="$PROJECT_DIR$/identity-service/identity-service.iml" />
     </modules>
   </component>
 </project>

@@ -12,12 +12,14 @@
         <module name="TerrainMicroservice" />
         <module name="CategorieTerrainMicroservice" />
         <module name="RedevableMicroservice" />
+        <module name="identity-service" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="api-gateway" target="17" />
       <module name="CategorieTerrainMicroservice" target="17" />
       <module name="discovery_server" target="17" />
+      <module name="identity-service" target="17" />
       <module name="RedevableMicroservice" target="17" />
       <module name="TaxeTNBMicroservice" target="17" />
       <module name="TerrainMicroservice" target="17" />
@@ -31,6 +33,7 @@
       <module name="TerrainMicroservice" options="-parameters" />
       <module name="api-gateway" options="-parameters" />
       <module name="discovery_server" options="-parameters" />
+      <module name="identity-service" options="-parameters" />
     </option>
   </component>
 </project>

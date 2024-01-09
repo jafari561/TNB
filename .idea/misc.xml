@@ -8,6 +8,7 @@
         <option value="$PROJECT_DIR$/TerrainMicroservice/pom.xml" />
         <option value="$PROJECT_DIR$/discovery_server/pom.xml" />
         <option value="$PROJECT_DIR$/api-gateway/pom.xml" />
+        <option value="$PROJECT_DIR$/identity-service/pom.xml" />
       </list>
     </option>
   </component>

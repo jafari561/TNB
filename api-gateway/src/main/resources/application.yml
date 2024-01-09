@@ -4,3 +4,53 @@ server:
 spring:
   application:
     name: api-gateway
+  cloud:
+    gateway:
+      routes:
+        - id: redevable-route
+          uri: lb://REDEVABLE-SERVICE
+          predicates:
+            - Path=/redevable/**
+            - Method=POST,PUT
+          filters:
+            - AuthenticationFilter
+        - id: redevable-route
+          uri: lb://REDEVABLE-SERVICE
+          predicates:
+            - Path=/redevable/**
+            - Method=GET
+
+
+        - id: categorie-route
+          uri: lb://CATEGORIE-SERVICE
+          predicates:
+            - Path=/categorie/**
+            - Method=POST,PUT
+          filters:
+            - AuthenticationFilter
+        - id: categorie-route
+          uri: lb://CATEGORIE-SERVICE
+          predicates:
+            - Path=/categorie/**
+            - Method=GET
+
+
+        - id: terrain-route
+          uri: lb://TERRAIN-SERVICE
+          predicates:
+            - Path=/terrain/**
+            - Path=/taxe/**
+            - Method=POST,PUT
+          filters:
+            - AuthenticationFilter
+        - id: terrain-route
+          uri: lb://TERRAIN-SERVICE
+          predicates:
+            - Path=/terrain/**
+            - Path=/taxe/**
+            - Method=GET
+
+        - id: identity-route
+          uri: lb://IDENTITY-SERVICE
+          predicates:
+            - Path=/auth/**

@@ -60,6 +60,18 @@ services:
     networks:
       - TNB-network
 
+  identity-service:
+    build:
+      context: ./identity-service
+      dockerfile: Dockerfile
+    container_name: identity-service
+    ports:
+      - "9999:9999"
+    depends_on:
+      - mysqli
+    networks:
+      - TNB-network
+
   redevable-service:
     build:
       context: ./RedevableMicroservice
@@ -159,6 +171,19 @@ services:
     networks:
       - TNB-network
 
+  mysqli:
+    image: mysql:latest
+    container_name: mysqli
+    ports:
+      - "9996:3306"
+    volumes:
+      - mysql_dbi:/var/lib/mysql
+    environment:
+      - MYSQL_DATABASE=tnb_identity
+      - MYSQL_ROOT_PASSWORD=root
+    networks:
+      - TNB-network
+
 networks:
   TNB-network:
     driver: bridge
@@ -167,3 +192,4 @@ volumes:
   mysql_dbr:
   mysql_dbc:
   mysql_dbt:
+  mysql_dbi:
