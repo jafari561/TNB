@@ -186,7 +186,7 @@ services:
 
   frontend:
     build:
-      context: ./project_vue
+      context: ./frontend/project_vue
       dockerfile: Dockerfile
     container_name: frontend
     ports:
