@@ -10,4 +10,4 @@ FROM openjdk:17-alpine
 WORKDIR /app
 COPY --from=build /app/target/api-gateway*.jar /app/api-gateway.jar
 CMD ["java", "-jar", "api-gateway.jar"]
-EXPOSE 8080
+EXPOSE 8085

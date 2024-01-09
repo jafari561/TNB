@@ -48,7 +48,7 @@ services:
       dockerfile: Dockerfile
     container_name: gateway
     ports:
-      - "8080:8080"
+      - "8085:8085"
     depends_on:
       - redevable-service
       - categorie-service
@@ -183,6 +183,16 @@ services:
       - MYSQL_ROOT_PASSWORD=root
     networks:
       - TNB-network
+
+  frontend:
+    build:
+      context: ./project_vue
+      dockerfile: Dockerfile
+    container_name: frontend
+    ports:
+      - "3454:8080"
+    depends_on:
+      - api-gateway
 
 networks:
   TNB-network:

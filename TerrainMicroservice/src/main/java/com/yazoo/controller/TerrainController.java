@@ -10,6 +10,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/terrain")
+@CrossOrigin
 public class TerrainController {
     private final TerrainService terrainService;
 

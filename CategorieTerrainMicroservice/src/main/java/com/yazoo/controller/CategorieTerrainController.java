@@ -10,6 +10,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/categorie")
+@CrossOrigin
 public class CategorieTerrainController {
     private final CategorieTerrainService categorieTerrainService;
 

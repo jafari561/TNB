@@ -11,6 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/taxe")
+@CrossOrigin
 public class TaxeTNBController {
     private final TaxeTNBService taxeTNBService;
 

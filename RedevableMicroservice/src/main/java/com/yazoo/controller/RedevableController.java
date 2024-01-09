@@ -11,6 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/redevable")
+@CrossOrigin
 public class RedevableController {
     private final RedevableService redevableService;
 
